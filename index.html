@@ -1,41 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PokéFocus Timer</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon Pomodoro</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
-    <h1>🔮 PokéFocus Timer</h1>
-
-    <div>
-      Focus: <input type="number" id="focus-time" value="25" min="1"> min
-      Break: <input type="number" id="short-break" value="5" min="1"> min
-      Long Break: <input type="number" id="long-break" value="15" min="1"> min
+    <div class="mode-buttons">
+      <button class="mode-button" data-mode="short">Short Break</button>
+      <button class="mode-button active" data-mode="focus">Focus</button>
+      <button class="mode-button" data-mode="long">Long Break</button>
     </div>
-
-    <div class="timer">
-      <span id="minutes">25</span>:<span id="seconds">00</span>
+    <div class="timer-display" id="timer">05:00</div>
+    <div class="controls">
+      <button id="start-pause"><img src="assets/play.svg" alt="Start" /></button>
+      <button id="reset"><img src="assets/reset.svg" alt="Reset" /></button>
+      <button id="settings-toggle"><img src="assets/settings.svg" alt="Settings" /></button>
     </div>
-
-    <div>
-      <button onclick="setSession('focus')">🍇 Focus</button>
-      <button onclick="setSession('short')">🍵 Short Break</button>
-      <button onclick="setSession('long')">🛌 Long Break</button>
-      <button onclick="setSession('stopwatch')">⏱ Stopwatch</button>
+    <div class="pokemon-container" id="pokemon-container" hidden>
+      <img src="assets/pikachu_run.gif" alt="Running Pikachu" />
     </div>
-
-    <div>
-      <button onclick="startTimer()">▶️ Start</button>
-      <button onclick="pauseTimer()">⏸️ Pause</button>
-      <button onclick="resetTimer()">🔄 Reset</button>
+    <div class="settings-panel" id="settings-panel">
+      <h2>Settings</h2>
+      <label>Focus Time: <input type="number" id="focus-time" value="25" min="1" /></label>
+      <label>Short Break: <input type="number" id="short-time" value="5" min="1" /></label>
+      <label>Long Break: <input type="number" id="long-time" value="15" min="1" /></label>
+      <label><input type="checkbox" id="stopwatch-mode" /> Stopwatch Mode</label>
+      <button id="save-settings">Save</button>
     </div>
   </div>
-
-  <img id="pokemon-runner" class="hidden" src="assets/pikachu-running.gif" alt="Running Pikachu" />
-
   <script src="script.js"></script>
 </body>
 </html>

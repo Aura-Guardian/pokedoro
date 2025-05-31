@@ -1,66 +1,74 @@
+
 body {
+  margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #2c003e;
-  color: #fff;
-  text-align: center;
-  padding: 2rem;
+  background-color: #111;
+  color: #b388ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .container {
-  max-width: 500px;
-  margin: auto;
-  background: #5e17eb;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-h1 {
-  margin-bottom: 1rem;
-}
-
-.timer {
-  font-size: 4rem;
-  margin: 1rem 0;
-}
-
-input {
-  width: 60px;
-  padding: 0.5rem;
   text-align: center;
-  border-radius: 5px;
-  border: none;
-  margin: 0.5rem;
 }
 
-button {
-  margin: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  background: #fff;
-  color: #5e17eb;
+.mode-buttons button {
+  background: transparent;
+  border: 1px solid #b388ff;
+  border-radius: 15px;
+  color: #b388ff;
+  padding: 0.5em 1em;
+  margin: 0.5em;
   cursor: pointer;
 }
 
-button:hover {
-  background: #d4b6ff;
+.mode-buttons .active {
+  background: #b388ff;
+  color: #111;
 }
 
-.hidden {
+.timer-display {
+  font-size: 8rem;
+  margin: 1rem 0;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.controls img {
+  width: 32px;
+  height: 32px;
+  filter: invert(70%) sepia(80%) saturate(400%) hue-rotate(230deg);
+}
+
+.settings-panel {
   display: none;
-}
-
-#pokemon-runner {
-  width: 80px;
-  animation: runLoop 4s linear infinite;
+  flex-direction: column;
+  background: #222;
+  padding: 1rem;
+  border-radius: 10px;
   position: absolute;
-  top: 80%;
-  left: 0;
+  top: 10%;
+  right: 10%;
+  color: white;
 }
 
-@keyframes runLoop {
-  0% { left: 0; }
-  100% { left: 100%; }
+.settings-panel input[type="number"] {
+  width: 3rem;
+}
+
+.settings-panel label {
+  margin: 0.5rem 0;
+  display: block;
+}
+
+.pokemon-container img {
+  margin-top: 1rem;
+  width: 100px;
 }
