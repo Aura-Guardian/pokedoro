@@ -6,7 +6,15 @@ let durations = { focus: 25, short: 5, long: 15 };
 let timeLeft = durations[currentMode] * 60;
 
 const timerDisplay = document.getElementById('timer');
-const pokemonContainer = document.getElementById('pokemon-container');
+const startPauseButton = document.getElementById('start-pause');
+const menuSound = document.getElementById('menu-sound');
+const focusFinish = document.getElementById('focus-finish');
+const breakFinish = document.getElementById('break-finish');
+
+function playSound(sound) {
+  sound.currentTime = 0;
+  sound.play();
+}
 
 function updateDisplay() {
   const minutes = Math.floor(timeLeft / 60);
@@ -17,7 +25,7 @@ function updateDisplay() {
 function startTimer() {
   if (isRunning) return;
   isRunning = true;
-  pokemonContainer.hidden = false;
+  startPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
   timer = setInterval(() => {
     timeLeft += isStopwatch ? 1 : -1;
     updateDisplay();
@@ -25,7 +33,12 @@ function startTimer() {
     if (!isStopwatch && timeLeft <= 0) {
       clearInterval(timer);
       isRunning = false;
-      pokemonContainer.hidden = true;
+      startPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+      if (currentMode === 'focus') {
+        playSound(focusFinish);
+      } else {
+        playSound(breakFinish);
+      }
     }
   }, 1000);
 }
@@ -33,7 +46,7 @@ function startTimer() {
 function pauseTimer() {
   clearInterval(timer);
   isRunning = false;
-  pokemonContainer.hidden = true;
+  startPauseButton.innerHTML = '<i class="fas fa-play"></i>';
 }
 
 function resetTimer() {
@@ -42,18 +55,19 @@ function resetTimer() {
   updateDisplay();
 }
 
-document.getElementById('start-pause').onclick = () => {
-  if (isRunning) {
-    pauseTimer();
-  } else {
-    startTimer();
-  }
+startPauseButton.onclick = () => {
+  playSound(menuSound);
+  isRunning ? pauseTimer() : startTimer();
 };
 
-document.getElementById('reset').onclick = resetTimer;
+document.getElementById('reset').onclick = () => {
+  playSound(menuSound);
+  resetTimer();
+};
 
 document.querySelectorAll('.mode-button').forEach(btn => {
   btn.onclick = () => {
+    playSound(menuSound);
     document.querySelectorAll('.mode-button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentMode = btn.dataset.mode;
@@ -62,11 +76,13 @@ document.querySelectorAll('.mode-button').forEach(btn => {
 });
 
 document.getElementById('settings-toggle').onclick = () => {
+  playSound(menuSound);
   const panel = document.getElementById('settings-panel');
   panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
 };
 
 document.getElementById('save-settings').onclick = () => {
+  playSound(menuSound);
   durations.focus = parseInt(document.getElementById('focus-time').value, 10);
   durations.short = parseInt(document.getElementById('short-time').value, 10);
   durations.long = parseInt(document.getElementById('long-time').value, 10);

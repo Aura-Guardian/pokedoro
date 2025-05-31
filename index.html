@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pokémon Pomodoro</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
   <div class="container">
@@ -14,15 +14,15 @@
       <button class="mode-button active" data-mode="focus">Focus</button>
       <button class="mode-button" data-mode="long">Long Break</button>
     </div>
-    <div class="timer-display" id="timer">05:00</div>
+
+    <div class="timer-display" id="timer">25:00</div>
+
     <div class="controls">
-      <button id="start-pause"><img src="assets/play.svg" alt="Start" /></button>
-      <button id="reset"><img src="assets/reset.svg" alt="Reset" /></button>
-      <button id="settings-toggle"><img src="assets/settings.svg" alt="Settings" /></button>
+      <button id="start-pause"><i class="fas fa-play"></i></button>
+      <button id="reset"><i class="fas fa-rotate-right"></i></button>
+      <button id="settings-toggle"><i class="fas fa-gear"></i></button>
     </div>
-    <div class="pokemon-container" id="pokemon-container" hidden>
-      <img src="assets/pikachu_run.gif" alt="Running Pikachu" />
-    </div>
+
     <div class="settings-panel" id="settings-panel">
       <h2>Settings</h2>
       <label>Focus Time: <input type="number" id="focus-time" value="25" min="1" /></label>
@@ -32,6 +32,11 @@
       <button id="save-settings">Save</button>
     </div>
   </div>
+
+  <audio id="menu-sound" src="assets/pokemonmenusoundeffect.mp3"></audio>
+  <audio id="focus-finish" src="assets/pokemonlevelupeffect.mp3"></audio>
+  <audio id="break-finish" src="assets/pokemoncentersoundeffect.mp3"></audio>
+
   <script src="script.js"></script>
 </body>
 </html>
