@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🕹️ PokéFocus Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔮 PokéFocus Timer</h1>
+    <div class="timer">
+      <span id="minutes">25</span>:<span id="seconds">00</span>
+    </div>
+    
+    <div class="buttons">
+      <button id="start">▶️ Start</button>
+      <button id="pause">⏸️ Pause</button>
+      <button id="reset">🔁 Reset</button>
+    </div>
+
+    <div class="session-buttons">
+      <button onclick="setSession(25)">🍇 Focus</button>
+      <button onclick="setSession(5)">🍵 Break</button>
+      <button onclick="setSession(15)">🛌 Long Break</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
